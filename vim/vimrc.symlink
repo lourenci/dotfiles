@@ -68,9 +68,6 @@ let g:nord_uniform_diff_background = 1
 let g:nord_cursor_line_number_background = 1
 colorscheme nord
 
-" Easy tab navigation
-nnoremap <D-t> :enew<CR>
-
 " Get off my lawn - helpful when learning Vim :)
 nnoremap <Up>     <NOP>
 nnoremap <Down>   <NOP>

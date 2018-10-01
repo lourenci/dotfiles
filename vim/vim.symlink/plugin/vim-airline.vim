@@ -8,3 +8,6 @@ autocmd VimEnter * call RemoveUnwantedStatus()
 
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#hunks#enabled = 0
+if has('nvim')
+  let g:airline#extensions#tabline#enabled = 1
+endif

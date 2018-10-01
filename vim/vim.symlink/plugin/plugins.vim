@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " Addons
 Plug 'scrooloose/nerdtree'
@@ -35,7 +35,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  Plug 'ervandew/supertab'
+else
+  " YouCompleteMe works only macvim
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
+endif
 
 " Syntax errors
 Plug 'w0rp/ale'
@@ -50,6 +57,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'hzchirs/vim-material'
 Plug 'rakr/vim-one'
+Plug 'dracula/vim'
 Plug 'haishanh/night-owl.vim'
 
 call plug#end()

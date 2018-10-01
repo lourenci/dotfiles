@@ -1,1 +1,3 @@
-set completeopt-=preview
+if !has('nvim')
+  set completeopt-=preview
+endif

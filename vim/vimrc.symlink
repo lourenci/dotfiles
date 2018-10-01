@@ -55,6 +55,10 @@ set foldmethod=indent
 set nofoldenable
 set cursorline " Highlight on current line
 set colorcolumn=120 " Vertital column at 120
+if !has('gui_running')
+  set termguicolors
+  set mouse=a
+endif
 
 let g:nord_uniform_status_lines = 1
 let g:nord_italic = 1

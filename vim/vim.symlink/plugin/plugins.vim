@@ -25,6 +25,7 @@ Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
 Plug 'alvan/vim-closetag' " Autoclose HTML tags
 Plug 'semanser/vim-outdated-plugins'
 Plug 'PeterRincker/vim-argumentative'
+Plug 'mhinz/vim-startify'
 
 " File system navigation
 Plug 'junegunn/fzf', { 'do': './install --bin' }

@@ -24,6 +24,11 @@ if has('nvim')
   tnoremap <C-w>o <C-\><C-n><C-w>o
   tnoremap <C-w>v <C-\><C-n><C-w>v
   tnoremap <C-w><C-w> <C-\><C-n><C-w><C-w>
+  tnoremap <C-d> <C-\><C-n><C-d>
+  tnoremap <C-u> <C-\><C-n><C-u>
+  tnoremap <C-f> <C-\><C-n><C-f>
+  tnoremap <C-b> <C-\><C-n><C-b>
+
   set inccommand=nosplit
 endif
 

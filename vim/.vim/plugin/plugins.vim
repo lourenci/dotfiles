@@ -24,12 +24,12 @@ Plug '/usr/local/opt/fzf' " You need to install fzf yourself: `brew install fzf`
 Plug 'junegunn/fzf.vim'
 Plug 'wellle/context.vim', { 'on': ['ContextToggle', 'ContextPeek'] }
 
-" Syntax highlighting
-Plug 'sheerun/vim-polyglot'
-
 if has('nvim-0.5')
   Plug 'neovim/nvim-lsp'
+  Plug 'nvim-treesitter/nvim-treesitter'
   Plug 'nvim-lua/completion-nvim'
+else
+  Plug 'sheerun/vim-polyglot'
 endif
 
 " Themes

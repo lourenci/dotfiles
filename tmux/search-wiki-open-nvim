@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+WIKI_PATH=~/Documents/Wiki/
+cd $WIKI_PATH
+RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case"
+IFS=: read -ra selected < <(
+  FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+  fzf --ansi \
+      --delimiter : \
+      --header 'CTRL-S: create an empty note | CTRL-Y: create a scratch note' \
+      --bind 'ctrl-s:execute(nvim -c "autocmd User VeryLazy ZenMode" -c "set ft=markdown" > /dev/tty)+abort' \
+      --bind 'ctrl-y:execute(nvim -c "autocmd User VeryLazy ZenMode" $(date -u +%F-%H-%M-%S).md > /dev/tty)+abort' \
+      --bind 'ctrl-j:jump-accept,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:page-down,ctrl-b:page-up,down:preview-down,up:preview-up,pgup:preview-page-up,pgdn:preview-page-down' \
+      --preview 'bat --color=always {1} --highlight-line {2}' \
+      --preview-window 'bottom'
+)
+[ -n "${selected[0]}" ] && nvim -c "autocmd User VeryLazy ZenMode" "$WIKI_PATH${selected[0]}" "+${selected[1]}"

@@ -1,0 +1,9 @@
+[submodule "tmux/tmux-fingers"]
+	path = tmux/tmux-fingers
+	url = git@github.com:Morantron/tmux-fingers.git
+[submodule "zsh/zsh-syntax-highlighting"]
+	path = zsh/zsh-syntax-highlighting
+	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/fzf-tab"]
+	path = zsh/fzf-tab
+	url = git@github.com:Aloxaf/fzf-tab.git

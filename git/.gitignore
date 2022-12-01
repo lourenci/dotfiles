@@ -1,0 +1,7 @@
+.direnv
+.envrc
+.env
+.tool-versions
+Session.vim
+.exrc
+.luarc.json

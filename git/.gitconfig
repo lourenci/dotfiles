@@ -1,0 +1,56 @@
+[user]
+	name = Leandro Lourenci
+	email = leandro@lourenci.com
+	signingkey = 983CE4F542BDB677
+[commit]
+	gpgsign = true
+	verbose = true
+[merge]
+	tool = nvimdiff1
+	conflictstyle = diff3
+[mergetool]
+	keepBackup = false
+ 	trustExitCode = true
+	hideResolved = true
+[interactive]
+	diffFilter = delta --color-only --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
+[pager]
+	diff = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
+	log = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
+	reflog = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
+	show = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
+[init]
+	defaultBranch = main
+[alias]
+	l = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr at %cI) %C(bold blue)<%an>%Creset'"
+	ls = "log --stat"
+	s = "status"
+	pa = "add -p"
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[merge]
+	autoStash = true
+[difftool]
+    prompt = false
+[diff]
+    tool = nvimdiff
+	algorithm = histogram
+	colormoved = default
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[core]
+	excludesfile = ~/.gitignore
+[delta "light-mode"]
+	light = true
+	features = line-numbers
+	navigate = true
+[delta "dark-mode"]
+	light = false
+	features = line-numbers
+	navigate = true
+[push]
+	autoSetupRemote = true
+[includeIf "gitdir:~/Developer/indebted/"]
+  path = ~/Developer/indebted/.gitconfig

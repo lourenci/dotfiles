@@ -48,7 +48,7 @@ update-nvim: ## Update nvim
 
 .PHONY: terminal-tools
 terminal-tools: ## Install terminal tools
-	brew install tmux fzf asdf gawk bash bat exa
+	brew install tmux fzf asdf
 	$(HOMEBREW_PREFIX)/opt/fzf/install --all
 	rm -f ~/.tmux.conf
 	ln -s $(PWD)/tmux/.tmux.conf ~/

@@ -9,6 +9,7 @@ fi
 export EDITOR="nvim"
 export GPG_TTY=$(tty)
 export LC_ALL='en_US.UTF-8'
+export HISTCONTROL=ignoreboth
 
 alias g="git"
 alias ll="ls -lah"

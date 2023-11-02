@@ -3,7 +3,7 @@ vim.loader.enable()
 require("keymappings").setup()
 require("commands")
 
-vim.opt.clipboard = {"unnamed", "unnamedplus"}
+vim.opt.clipboard = { "unnamed", "unnamedplus" }
 vim.opt.showbreak = "↪"
 vim.opt.writebackup = false
 vim.opt.swapfile = false
@@ -20,7 +20,7 @@ vim.opt.smartcase = true
 
 vim.opt.showmode = false
 
-vim.opt.diffopt:append({"algorithm:patience", "linematch:5000", "iwhite"})
+vim.opt.diffopt:append({ "algorithm:patience", "linematch:5000", "iwhite" })
 
 vim.opt.undofile = true
 
@@ -43,7 +43,7 @@ vim.opt.ttimeout = false
 
 vim.opt.shortmess:append({ c = true, W = true, C = true })
 
-vim.opt.completeopt:remove({"preview"})
+vim.opt.completeopt:remove({ "preview" })
 
 vim.opt.conceallevel = 2
 
@@ -62,8 +62,10 @@ vim.opt.background = "light"
 
 vim.o.winbar = "[%{winnr()}]"
 
-vim.cmd.aunmenu{"PopUp.How-to\\ disable\\ mouse"}
+vim.cmd.aunmenu { "PopUp.How-to\\ disable\\ mouse" }
 vim.cmd([[
+	nmenu PopUp.Close <C-w>q
+	nmenu PopUp.\  <Nop>
 	nmenu PopUp.Toggle\ fold za
 	nmenu PopUp.\  <Nop>
 	nmenu PopUp.Go\ to\ definition <C-]>

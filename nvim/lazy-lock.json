@@ -10,7 +10,6 @@
   "fzf-lua": { "branch": "main", "commit": "6589bdd872385d120a1eb3cb85e5d15d37621c1d" },
   "github-colors": { "branch": "main", "commit": "7292749e49e6f870e63879a528bb05c8c8d1a59a" },
   "lazy.nvim": { "branch": "main", "commit": "16603c6917435d8446f7357cb61095138a417085" },
-  "lualine.nvim": { "branch": "master", "commit": "2248ef254d0a1488a72041cfb45ca9caada6d994" },
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
   "md-img-paste.vim": { "branch": "master", "commit": "787be15ff52ea2db5ae7b813ab8808c8d4cf749e" },
   "noice.nvim": { "branch": "main", "commit": "92433164e2f7118d4122c7674c3834d9511722ba" },

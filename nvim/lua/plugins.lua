@@ -5,36 +5,36 @@ return {
 			require("Comment").setup()
 		end,
 		keys = {
-			{"gc", mode = {"n", "v"}},
-			{"gb", mode = {"n", "v"}},
+			{ "gc", mode = { "n", "v" } },
+			{ "gb", mode = { "n", "v" } },
 		}
 	},
 
 	{
 		"tpope/vim-abolish",
-		cmd = {"S"},
+		cmd = { "S" },
 		keys = {
-			{"cr", mode = {"n"}},
+			{ "cr", mode = { "n" } },
 		},
 	},
 
 	{
 		"tpope/vim-surround",
-		dependencies = {{"tpope/vim-repeat"}},
+		dependencies = { { "tpope/vim-repeat" } },
 		keys = {
-			{"cs", mode = {"n"}},
-			{"ys", mode = {"n"}},
-			{"ds", mode = {"n"}},
-			{"S", mode = {"v"}},
+			{ "cs", mode = { "n" } },
+			{ "ys", mode = { "n" } },
+			{ "ds", mode = { "n" } },
+			{ "S",  mode = { "v" } },
 		},
 	},
 
-	{"michaeljsmith/vim-indent-object", event = "VeryLazy"},
+	{ "michaeljsmith/vim-indent-object", event = "VeryLazy" },
 
 	{
 		"github/copilot.vim",
 		event = "InsertEnter",
-		init = function ()
+		init = function()
 			vim.cmd([[
 				let g:copilot_no_maps = v:true
 			]])
@@ -44,41 +44,41 @@ return {
 	{
 		"rgroli/other.nvim",
 		config = function()
-			require"config/other"
+			require "config/other"
 		end,
-		cmd = {"Other", "OtherSplit", "OtherVSplit"}
+		cmd = { "Other", "OtherSplit", "OtherVSplit" }
 	},
 
 	{
 		"tpope/vim-fugitive",
-		dependencies = {{
+		dependencies = { {
 			"tpope/vim-rhubarb",
-			config = function ()
+			config = function()
 				vim.api.nvim_create_user_command(
 					"Browse",
-					function (args)
+					function(args)
 						vim.ui.open(args.args)
 					end,
-					{nargs = 1}
+					{ nargs = 1 }
 				)
 			end
-		}},
+		} },
 		event = "VeryLazy", -- Some commands like `Gdiff` doesn't lazy load it
 	},
 
 	{
 		"ibhagwan/fzf-lua",
-		config = function() require"config/fzf-lua" end,
-		cmd = {"FzfLua"},
-    },
+		config = function() require "config/fzf-lua" end,
+		cmd = { "FzfLua" },
+	},
 
 	{
-        "mbbill/undotree",
-        cmd = {"UndotreeToggle"},
-        config = function() require"config/undotree" end,
-    },
+		"mbbill/undotree",
+		cmd = { "UndotreeToggle" },
+		config = function() require "config/undotree" end,
+	},
 
-	{"itchyny/vim-qfedit", ft = {"qf"}},
+	{ "itchyny/vim-qfedit",              ft = { "qf" } },
 
 	-- There is no way to efficiently lazy load it. Even `VeryLazy` doesn't work.
 	-- See https://github.com/folke/lazy.nvim/issues/880
@@ -131,16 +131,16 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				javascript = {"prettier"},
-				javascriptreact = {"prettier"},
-				typescript = {"prettier"},
-				typescriptreact = {"prettier"},
-				html = {"prettier"},
-				css = {"prettier"},
-				scss = {"prettier"},
-				go = {"gofmt", "goimports"},
-				terraform = {"terraform_fmt"},
-				["*"] = {"trim_whitespace"},
+				javascript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
+				html = { "prettier" },
+				css = { "prettier" },
+				scss = { "prettier" },
+				go = { "gofmt", "goimports" },
+				terraform = { "terraform_fmt" },
+				["*"] = { "trim_whitespace" },
 			},
 			format_on_save = {
 				timeout_ms = 5000,
@@ -160,12 +160,12 @@ return {
 
 	{
 		"psliwka/vim-smoothie",
-		keys = {"<C-u>", "<C-d>", "<C-b>", "<C-f>"},
+		keys = { "<C-u>", "<C-d>", "<C-b>", "<C-f>" },
 	},
 
 	{
 		"jinh0/eyeliner.nvim",
-		keys = {"f", "F", "t", "T"},
+		keys = { "f", "F", "t", "T" },
 		opts = {
 			highlight_on_key = true,
 		},
@@ -173,8 +173,8 @@ return {
 
 	{
 		"hrsh7th/nvim-cmp",
-		event = {"InsertEnter", "CmdlineEnter"},
-		config = function() require"config/nvim-cmp" end,
+		event = { "InsertEnter", "CmdlineEnter" },
+		config = function() require "config/nvim-cmp" end,
 		dependencies = {
 			{
 				"hrsh7th/cmp-nvim-lsp",
@@ -198,22 +198,17 @@ return {
 
 	{
 		"lourenci/github-colors",
-		config = function ()
+		config = function()
 			vim.cmd.colorscheme("github-colors")
 		end,
 		lazy = false,
 		priority = 1000,
 	},
-	{
-		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		opts = require("config/lualine"),
-	},
 
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = function ()
+		config = function()
 			require("nvim-autopairs").setup({
 				disable_in_visualblock = true,
 			})
@@ -222,7 +217,7 @@ return {
 
 	{
 		"vim-test/vim-test",
-		cmd = {"TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit"},
+		cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
 		config = function()
 			vim.cmd([[
 				let test#strategy = "neovim"
@@ -251,25 +246,25 @@ return {
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
-		ft = {"markdown"},
+		ft = { "markdown" },
 	},
 	{
 		"ferrine/md-img-paste.vim",
-		config = function ()
+		config = function()
 			vim.g.mdip_imgdir = "."
 			vim.g.mdip_imgdir_intext = "."
 		end,
-		ft = {"markdown"},
+		ft = { "markdown" },
 	},
 	{
 		"folke/zen-mode.nvim",
-		cmd = {"ZenMode"},
-		config = function() require"config/zenmode" end,
+		cmd = { "ZenMode" },
+		config = function() require "config/zenmode" end,
 	},
 
-	{"mechatroner/rainbow_csv", ft = {"csv", "tsv"}},
+	{ "mechatroner/rainbow_csv", ft = { "csv", "tsv" } },
 
-	{"vimpostor/vim-lumen", event = "VeryLazy"},
+	{ "vimpostor/vim-lumen",     event = "VeryLazy" },
 
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -279,7 +274,7 @@ return {
 	},
 	{
 		"Wansmer/treesj",
-		cmd = {"TSJSplit", "TSJJoin"},
+		cmd = { "TSJSplit", "TSJJoin" },
 		dependencies = {
 			{
 				"nvim-treesitter/nvim-treesitter",
@@ -296,7 +291,7 @@ return {
 
 	{
 		"kevinhwang91/nvim-fundo",
-		dependencies = {{"kevinhwang91/promise-async"}},
+		dependencies = { { "kevinhwang91/promise-async" } },
 		build = function() require('fundo').install() end,
 		config = true,
 	}

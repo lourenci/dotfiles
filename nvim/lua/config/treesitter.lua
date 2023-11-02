@@ -1,6 +1,6 @@
 return {
-	setup = function ()
-		require"nvim-treesitter.configs".setup({
+	setup = function()
+		require "nvim-treesitter.configs".setup({
 			ensure_installed = {
 				"bash",
 				"comment",
@@ -44,6 +44,7 @@ return {
 		})
 
 		vim.treesitter.language.register("html", "gohtml")
+		vim.treesitter.language.register("terraform", "terraform-vars")
 	end,
 	filetypes = {
 		"bash",

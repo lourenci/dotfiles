@@ -114,6 +114,7 @@ return {
 				hl = { link = "NonText" },
 				vt_position = "end_of_line",
 				implementation = { enabled = true },
+				disable = { filetypes = { "terraform" } },
 			})
 		end,
 		event = "LspAttach",
@@ -230,6 +231,7 @@ return {
 				skip_confirm_for_simple_edits = true,
 				keymaps = require("keymappings").oil,
 				use_default_keymaps = false,
+				delete_to_trash = true,
 			})
 		end,
 		event = "VeryLazy",

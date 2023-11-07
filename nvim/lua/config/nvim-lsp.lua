@@ -1,11 +1,11 @@
 return {
-	setup = function ()
+	setup = function()
 		local lspconfig = require("lspconfig")
 		local util = require("lspconfig.util")
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-		local on_attach = function (client, bufnr)
+		local on_attach = function(client, bufnr)
 			if client.supports_method("documentSymbolProvider") then
 				require("nvim-navic").attach(client, bufnr)
 			end
@@ -19,57 +19,57 @@ return {
 		vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
 		vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
-		lspconfig.tsserver.setup{
+		lspconfig.tsserver.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
-		lspconfig.cssls.setup{
+		lspconfig.cssls.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
-		lspconfig.jsonls.setup{
+		lspconfig.jsonls.setup {
 			on_attach = on_attach,
 			settings = {
 				json = {
 					schemas = {
 						{
 							description = "Renovate",
-							fileMatch = {"renovate.json"},
+							fileMatch = { "renovate.json" },
 							url = "https://docs.renovatebot.com/renovate-schema.json"
 						},
 						{
 							description = "JSON schema for NPM package.json files",
-							fileMatch = {"package.json"},
+							fileMatch = { "package.json" },
 							url = "https://json.schemastore.org/package.json"
 						},
 						{
 							description = "TypeScript compiler configuration file",
-							fileMatch = {"tsconfig.json", "tsconfig.*.json"},
+							fileMatch = { "tsconfig.json", "tsconfig.*.json" },
 							url = "https://json.schemastore.org/tsconfig"
 						},
 						{
 							description = "Lerna config",
-							fileMatch = {"lerna.json"},
+							fileMatch = { "lerna.json" },
 							url = "https://json.schemastore.org/lerna"
 						},
 						{
 							description = "Babel configuration",
-							fileMatch = {".babelrc.json", ".babelrc", "babel.config.json"},
+							fileMatch = { ".babelrc.json", ".babelrc", "babel.config.json" },
 							url = "https://json.schemastore.org/lerna"
 						},
 						{
 							description = "ESLint config",
-							fileMatch = {".eslintrc.json", ".eslintrc"},
+							fileMatch = { ".eslintrc.json", ".eslintrc" },
 							url = "https://json.schemastore.org/eslintrc"
 						},
 						{
 							description = "Prettier config",
-							fileMatch = {".prettierrc", ".prettierrc.json", "prettier.config.json"},
+							fileMatch = { ".prettierrc", ".prettierrc.json", "prettier.config.json" },
 							url = "https://json.schemastore.org/prettierrc"
 						},
 						{
 							description = "Vercel Now config",
-							fileMatch = {"now.json"},
+							fileMatch = { "now.json" },
 							url = "https://json.schemastore.org/now"
 						},
 					},
@@ -77,17 +77,17 @@ return {
 			},
 			capabilities = capabilities,
 		}
-		lspconfig.gopls.setup{
+		lspconfig.gopls.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
-			filetypes = {"go", "gomod", "gowork", "gotmpl", "gohtml"}, -- maybe add `gohtml` to nvim repo?
+			filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtml" }, -- maybe add `gohtml` to nvim repo?
 			settings = {
 				gopls = {
-					templateExtensions = {"gohtml"},
+					templateExtensions = { "gohtml" },
 				}
 			},
 		}
-		lspconfig.yamlls.setup{
+		lspconfig.yamlls.setup {
 			on_attach = on_attach,
 			settings = {
 				yaml = {
@@ -101,34 +101,35 @@ return {
 			},
 			capabilities = capabilities,
 		}
-		lspconfig.dockerls.setup{
+		lspconfig.dockerls.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
-		lspconfig.html.setup{
+		lspconfig.html.setup {
 			on_attach = on_attach,
-			filetypes = {"html", "gohtml"}, -- add to nvim repo?
+			filetypes = { "html", "gohtml" }, -- add to nvim repo?
 			capabilities = capabilities,
 		}
-		lspconfig.terraformls.setup{
-			on_attach = on_attach,
-			capabilities = capabilities,
-		}
-		lspconfig.marksman.setup{
+		lspconfig.terraformls.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
-		lspconfig.grammarly.setup{
+		lspconfig.marksman.setup {
 			on_attach = on_attach,
-			filetypes = {"markdown", "gitcommit"},
+			capabilities = capabilities,
+		}
+		lspconfig.grammarly.setup {
+			on_attach = on_attach,
+			cmd = { "asdf", "direnv", "shell", "nodejs", "16.14.0", "--", "grammarly-languageserver", "--stdio" },
+			filetypes = { "markdown", "gitcommit" },
 			capabilities = capabilities,
 			init_options = { clientId = vim.env.GRAMMARLY_CLIENT_ID },
 			root_dir = function(fname)
-				local root_files = {'.marksman.toml'}
+				local root_files = { '.marksman.toml' }
 				return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
 			end,
 		}
-		lspconfig.ruby_ls.setup{
+		lspconfig.ruby_ls.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
@@ -143,7 +144,7 @@ return {
 					},
 					diagnostics = {
 						-- Get the language server to recognize the `vim` global
-						globals = {'vim'},
+						globals = { 'vim' },
 					},
 					workspace = {
 						-- Make the server aware of Neovim runtime files

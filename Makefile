@@ -7,7 +7,8 @@ help:
 .PHONY: nvim
 nvim: ## Install nvim
 	brew tap homebrew/cask-fonts
-	brew install ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server grammarly-languageserver jq gopls
+	brew install ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server jq gopls
+	asdf direnv shell nodejs 16.14.0 -- npm install -g grammarly-languageserver
 	GOBIN=$(PWD) go install golang.org/x/tools/cmd/goimports@latest && mv ./goimports ~/.local/bin/goimports
 	brew install neovim --HEAD
 	rm -rf ~/.config/nvim
@@ -26,15 +27,17 @@ nvim: ## Install nvim
 
 .PHONY: update-nvim
 update-nvim: ## Update nvim
-	brew upgrade ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server grammarly-languageserver jq gopls
+	brew upgrade ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server jq gopls
 	GOBIN=$(PWD) go install golang.org/x/tools/cmd/goimports@latest && mv ./goimports ~/.local/bin/goimports
 	brew upgrade neovim --fetch-HEAD
+	asdf direnv shell nodejs 16.14.0 -- npm uninstall -g grammarly-languageserver
 	npm -g uninstall \
 		dockerfile-language-server-nodejs \
 		typescript typescript-language-server \
 		vscode-langservers-extracted \
 		yaml-language-server \
 		prettier
+	asdf direnv shell nodejs 16.14.0 -- npm install -g grammarly-languageserver
 	npm -g install \
 		dockerfile-language-server-nodejs \
 		typescript typescript-language-server \

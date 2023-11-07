@@ -1,8 +1,8 @@
 return {
-	setup = function ()
+	setup = function()
 		vim.g.mapleader = " "
 
-		local opts = {noremap=true, silent=true}
+		local opts = { noremap = true, silent = true }
 
 		vim.api.nvim_set_keymap("n", "[Q", "<cmd>cfirst<CR>", opts)
 		vim.api.nvim_set_keymap("n", "]q", "<cmd>cnext<CR>", opts)
@@ -19,10 +19,11 @@ return {
 
 		vim.api.nvim_set_keymap("n", "<Leader>;", "<cmd>tabe <bar> :terminal<CR>", opts)
 
-		vim.api.nvim_set_keymap("t", "<C-l>", "<C-\\><C-n><C-l>i", {noremap = false, silent = true})
+		vim.api.nvim_set_keymap("t", "<C-l>", "<C-\\><C-n><C-l>i", { noremap = false, silent = true })
 		vim.api.nvim_set_keymap("t", "<C-b>", "<C-\\><C-n><C-b>", opts)
 
-		vim.api.nvim_set_keymap("v", "<leader>rp", "*N:,$s~<C-r>/~<C-r>/~gc|1,''-&&<c-f>F~;<right>xxvt~", {noremap = false, silent = true})
+		vim.api.nvim_set_keymap("v", "<leader>rp", "*N:,$s~<C-r>/~<C-r>/~gc|1,''-&&<c-f>F~;<right>xxvt~",
+			{ noremap = false, silent = true })
 
 
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -31,8 +32,8 @@ return {
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({"v", "n"}, "<leader>ca", vim.lsp.buf.code_action)
-		vim.keymap.set("n", "<leader>gr", function () vim.lsp.buf.references({includeDeclaration=false}) end, opts)
+		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action)
+		vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references({ includeDeclaration = false }) end, opts)
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
@@ -59,17 +60,14 @@ return {
 		vim.keymap.set("n", "gJ", "<cmd>TSJJoin<CR>", opts)
 
 		vim.cmd([[
-			  imap <expr><silent> <C-l> snippy#can_expand_or_advance() ? "<Plug>(snippy-expand-or-advance)" : copilot#Accept("")
-			  smap <expr> <C-l> snippy#can_jump(1) ? "<Plug>(snippy-next)" : "<C-l>"
-			  imap <expr> <C-h> snippy#can_jump(-1) ? "<Plug>(snippy-previous)" : "<C-h>"
-			  smap <expr> <C-h> snippy#can_jump(-1) ? "<Plug>(snippy-previous)" : "<C-h>"
+			imap <silent><expr> <C-l> copilot#Accept("")
 		]])
 
-		vim.keymap.set({"n", "i", "s"}, "<Down>", function()
+		vim.keymap.set({ "n", "i", "s" }, "<Down>", function()
 			require("noice.lsp").scroll(4)
 		end, { silent = true })
 
-		vim.keymap.set({"n", "i", "s"}, "<Up>", function()
+		vim.keymap.set({ "n", "i", "s" }, "<Up>", function()
 			require("noice.lsp").scroll(-4)
 		end, { silent = true })
 
@@ -83,8 +81,8 @@ return {
 		["-"] = "actions.parent",
 		["!"] = "actions.open_cmdline",
 	},
-	nvim_cmp = function ()
-		local cmp = require"cmp"
+	nvim_cmp = function()
+		local cmp = require "cmp"
 
 		return cmp.mapping.preset.insert({
 			['<Down>'] = {

@@ -1,5 +1,4 @@
-local cmp = require"cmp"
-local snippy = require"snippy"
+local cmp = require "cmp"
 
 local kind_icons = {
 	Text = "",
@@ -32,12 +31,11 @@ local kind_icons = {
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			snippy.expand_snippet(args.body)
+			vim.snippet.expand(args.body)
 		end
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "snippy" },
 		{
 			name = "buffer",
 			option = {

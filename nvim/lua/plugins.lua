@@ -187,12 +187,6 @@ return {
 				}
 			},
 			"hrsh7th/cmp-buffer",
-			{
-				"dcampos/cmp-snippy",
-				dependencies = {
-					"dcampos/nvim-snippy",
-				}
-			},
 		},
 	},
 

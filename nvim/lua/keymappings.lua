@@ -59,9 +59,9 @@ return {
 		vim.keymap.set("n", "gS", "<cmd>TSJSplit<CR>", opts)
 		vim.keymap.set("n", "gJ", "<cmd>TSJJoin<CR>", opts)
 
-		vim.cmd([[
-			imap <silent><expr> <C-l> copilot#Accept("")
-		]])
+		vim.keymap.set({ 'i', 's' }, '<C-l>', function()
+			return '<cmd>lua require("copilot.suggestion").accept()<cr>'
+		end, { expr = true })
 
 		vim.keymap.set({ "n", "i", "s" }, "<Down>", function()
 			require("noice.lsp").scroll(4)

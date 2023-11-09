@@ -32,13 +32,27 @@ return {
 	{ "michaeljsmith/vim-indent-object", event = "VeryLazy" },
 
 	{
-		"github/copilot.vim",
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
 		event = "InsertEnter",
-		init = function()
-			vim.cmd([[
-				let g:copilot_no_maps = v:true
-			]])
-		end
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					auto_trigger = true,
+					keymap = {
+						accept = false,
+						accept_word = false,
+						accept_line = false,
+						next = false,
+						prev = false,
+						dismiss = false,
+					},
+				},
+				filetypes = {
+					["*"] = true,
+				},
+			})
+		end,
 	},
 
 	{

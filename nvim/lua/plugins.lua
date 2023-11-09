@@ -19,6 +19,14 @@ return {
 	},
 
 	{
+		"lewis6991/gitsigns.nvim",
+		event = "BufRead",
+		opts = {
+			on_attach = require("keymappings").gitsigns,
+		},
+	},
+
+	{
 		"tpope/vim-surround",
 		dependencies = { { "tpope/vim-repeat" } },
 		keys = {

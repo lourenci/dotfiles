@@ -60,7 +60,18 @@ return {
 		vim.keymap.set("n", "gJ", "<cmd>TSJJoin<CR>", opts)
 
 		vim.keymap.set({ 'i', 's' }, '<C-l>', function()
-			return '<cmd>lua require("copilot.suggestion").accept()<cr>'
+			if vim.snippet.jumpable(1) then
+				return '<cmd>lua vim.snippet.jump(1)<cr>'
+			else
+				return '<cmd>lua require("copilot.suggestion").accept()<cr>'
+			end
+		end, { expr = true })
+		vim.keymap.set({ 'i', 's' }, '<C-h>', function()
+			if vim.snippet.jumpable(-1) then
+				return '<cmd>lua vim.snippet.jump(-1)<cr>'
+			else
+				return '<C-h>'
+			end
 		end, { expr = true })
 
 		vim.keymap.set({ "n", "i", "s" }, "<Down>", function()

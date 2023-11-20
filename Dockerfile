@@ -16,19 +16,20 @@ RUN go install golang.org/x/tools/gopls@latest
 FROM alpine as neovim-plugins
 RUN apk add --no-cache git nodejs npm tree-sitter-cli build-base jq curl
 COPY nvim /root/.config/nvim
+RUN cat docker-clipboard >> /root/.config/nvim/init.vim
 COPY --from=neovim /usr/local/bin/nvim /usr/local/bin/nvim
 COPY --from=neovim /usr/local/share/nvim /usr/local/share/nvim
 RUN nvim --headless "+Lazy! install" +qa
 RUN nvim --headless "+set ft=json" \
-	"+TSInstallSync! bash comment css dockerfile git_rebase gitattributes gitignore gitcommit go gomod gowork html java javascript json jsonc json5 lua make markdown markdown_inline nix regex ruby scss sql tsx terraform typescript vim yaml" \
+	"+TSInstallSync! bash comment css dockerfile git_rebase gitattributes gitcommit gitignore go gomod gowork graphql html java javascript json json5 jsonc kotlin lua make markdown markdown_inline nix regex ruby scss sql terraform tsx typescript vim yaml" \
 	+qa
 RUN npm -g install \
-		dockerfile-language-server-nodejs \
-		typescript typescript-language-server \
-		vscode-langservers-extracted \
-		yaml-language-server \
-		grammarly-languageserver \
-		prettier
+	dockerfile-language-server-nodejs \
+	typescript typescript-language-server \
+	vscode-langservers-extracted \
+	yaml-language-server \
+	grammarly-languageserver \
+	prettier
 RUN echo "https://github.com/artempyanykh/marksman/releases/download/$(curl --silent "https://api.github.com/repos/artempyanykh/marksman/releases/latest" | jq ".. .tag_name? // empty")/marksman-linux" | sed 's/"//g' | xargs curl -O -L
 RUN chmod +x ./marksman-linux
 

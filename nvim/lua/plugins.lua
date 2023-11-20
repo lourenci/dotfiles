@@ -23,6 +23,14 @@ return {
 		event = "BufRead",
 		opts = {
 			on_attach = require("keymappings").gitsigns,
+			signs = {
+				add          = { text = " " },
+				change       = { text = " " },
+				delete       = { text = " " },
+				topdelete    = { text = " " },
+				changedelete = { text = " " },
+				untracked    = { text = " " },
+			},
 		},
 	},
 
@@ -136,7 +144,12 @@ return {
 				hl = { link = "NonText" },
 				vt_position = "end_of_line",
 				implementation = { enabled = true },
-				disable = { filetypes = { "terraform" } },
+				disable = {
+					filetypes = {
+						"terraform",
+						"dockerfile"
+					}
+				},
 			})
 		end,
 		event = "LspAttach",

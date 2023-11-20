@@ -16,7 +16,8 @@ RUN go install golang.org/x/tools/gopls@latest
 FROM alpine as neovim-plugins
 RUN apk add --no-cache git nodejs npm tree-sitter-cli build-base jq curl
 COPY nvim /root/.config/nvim
-RUN cat docker-clipboard >> /root/.config/nvim/init.vim
+COPY docker-clipboard /tmp
+RUN cat /tmp/docker-clipboard >> /root/.config/nvim/init.lua
 COPY --from=neovim /usr/local/bin/nvim /usr/local/bin/nvim
 COPY --from=neovim /usr/local/share/nvim /usr/local/share/nvim
 RUN nvim --headless "+Lazy! install" +qa

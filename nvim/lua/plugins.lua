@@ -227,15 +227,6 @@ return {
 	},
 
 	{
-		"lourenci/github-colors",
-		config = function()
-			vim.cmd.colorscheme("github-colors")
-		end,
-		lazy = false,
-		priority = 1000,
-	},
-
-	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = function()

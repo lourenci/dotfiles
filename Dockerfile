@@ -35,7 +35,7 @@ RUN echo "https://github.com/artempyanykh/marksman/releases/download/$(curl --si
 RUN chmod +x ./marksman-linux
 
 FROM homebrew/brew as brew
-RUN brew install hashicorp/tap/terraform-ls lua-language-server efm-langserver
+RUN brew install hashicorp/tap/terraform-ls lua-language-server
 
 FROM alpine
 # TODO: build-base should be removed
@@ -48,7 +48,7 @@ COPY --from=neovim-plugins /usr/local/lib/node_modules /usr/local/lib/node_modul
 COPY --from=neovim-plugins /root/.config/nvim /root/.config/nvim
 COPY --from=neovim-plugins /root/.local/share/nvim /root/.local/share/nvim
 COPY --from=neovim-plugins /marksman-linux /usr/local/bin/marksman
-COPY --from=brew /home/linuxbrew/.linuxbrew/bin/terraform-ls /home/linuxbrew/.linuxbrew/bin/lua-language-server /home/linuxbrew/.linuxbrew/bin/efm-langserver /usr/local/bin/
+COPY --from=brew /home/linuxbrew/.linuxbrew/bin/terraform-ls /home/linuxbrew/.linuxbrew/bin/lua-language-server /usr/local/bin/
 # Create symbolic links for every installed npm package (https://github.com/moby/moby/issues/40449)
 RUN cd /usr/local/bin && \
 	ln -s ../lib/node_modules/dockerfile-language-server-nodejs/bin/docker-langserver docker-langserver && \

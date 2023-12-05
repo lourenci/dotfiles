@@ -195,11 +195,6 @@ return {
 	},
 
 	{
-		"psliwka/vim-smoothie",
-		keys = { "<C-u>", "<C-d>", "<C-b>", "<C-f>" },
-	},
-
-	{
 		"jinh0/eyeliner.nvim",
 		keys = { "f", "F", "t", "T" },
 		opts = {

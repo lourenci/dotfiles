@@ -3,20 +3,29 @@
 possible_sessions="{ zoxide query -l & tmux list-sessions -F '#{?session_attached,,#{session_name}}' 2> /dev/null | sed '/^$/d'; }"
 
 selected=$(eval "$possible_sessions" | \
-	FZF_DEFAULT_OPTS='--reverse --cycle' fzf --query "$*" --select-1 --header "CTRL-S to create a session with that name; CTRL-X to kill a session;" --bind "ctrl-s:print-query+abort" --bind "ctrl-x:execute(tmux kill-session -t {})+reload(eval \"$possible_sessions\")") 
+	FZF_DEFAULT_OPTS='--reverse --cycle' fzf --query "$*" --select-1 --header "CTRL-S to create a session with that name; CTRL-X to kill a session;" --bind "ctrl-s:print-query+abort" --bind "ctrl-x:execute(tmux kill-session -t {})+reload(eval \"$possible_sessions\")")
 
 if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+if [[ -d $selected ]]; then
+	session_name=$(basename "$selected")
+	directory=$selected
+else
+	session_name=$selected
+fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t="$session_name" 2> /dev/null; then
+	if [[ -z "$directory" ]]; then
+		tmux new-session -ds "$session_name"
+	else
+		tmux new-session -ds "$session_name" -c $selected
+	fi
 fi
 
 if [[ $TMUX ]]; then
-	tmux switch-client -t $selected_name
+	tmux switch-client -t "$session_name"
 else
-	tmux attach -t $selected_name
+	tmux attach -t "$session_name"
 fi

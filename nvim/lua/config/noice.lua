@@ -18,10 +18,6 @@ return {
 				find = "Type Name Content",
 			},
 		},
-		{
-			view = "notify",
-			filter = { event = "msg_showmode" },
-		},
 	},
 	views = {
 		mini = {
@@ -32,5 +28,8 @@ return {
 				row = -2,
 			},
 		},
+	},
+	messages = {
+		view_search = false,
 	},
 }

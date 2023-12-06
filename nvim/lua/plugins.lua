@@ -222,6 +222,12 @@ return {
 	},
 
 	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		opts = require("config/lualine"),
+	},
+
+	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = function()

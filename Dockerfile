@@ -21,9 +21,7 @@ RUN cat /tmp/docker-clipboard >> /root/.config/nvim/init.lua
 COPY --from=neovim /usr/local/bin/nvim /usr/local/bin/nvim
 COPY --from=neovim /usr/local/share/nvim /usr/local/share/nvim
 RUN nvim --headless "+Lazy! install" +qa
-RUN nvim --headless "+set ft=json" \
-	"+TSInstallSync! bash comment css dockerfile git_rebase gitattributes gitcommit gitignore go gomod gowork graphql html java javascript json json5 jsonc kotlin lua make markdown markdown_inline nix regex ruby scss sql terraform tsx typescript vim yaml" \
-	+qa
+RUN nvim --headless "+TSInstallSync! all" +qa
 RUN npm -g install \
 	dockerfile-language-server-nodejs \
 	typescript typescript-language-server \

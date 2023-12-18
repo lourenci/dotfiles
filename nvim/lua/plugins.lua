@@ -280,7 +280,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = require("config/treesitter").setup,
-		ft = require("config/treesitter").filetypes,
 	},
 	{
 		"Wansmer/treesj",

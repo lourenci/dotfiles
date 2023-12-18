@@ -155,11 +155,6 @@ return {
 		event = "LspAttach",
 	},
 	{
-		"stevearc/dressing.nvim",
-		opts = require("config/dressing"),
-		event = "VeryLazy",
-	},
-	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = true,
 	},
@@ -192,14 +187,6 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		}
-	},
-
-	{
-		"jinh0/eyeliner.nvim",
-		keys = { "f", "F", "t", "T" },
-		opts = {
-			highlight_on_key = true,
-		},
 	},
 
 	{

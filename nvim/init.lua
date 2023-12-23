@@ -3,7 +3,6 @@ vim.loader.enable()
 require("keymappings").setup()
 require("commands")
 
-vim.opt.clipboard = { "unnamed", "unnamedplus" }
 vim.opt.showbreak = "↪"
 vim.opt.writebackup = false
 vim.opt.swapfile = false

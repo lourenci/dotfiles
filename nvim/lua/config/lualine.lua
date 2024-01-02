@@ -31,6 +31,7 @@ return {
 			"selectioncount",
 			"searchcount",
 			{
+				"copilot",
 				"diagnostics",
 				diagnostics_color = {
 					error = "DiagnosticSignError",

@@ -210,6 +210,7 @@ return {
 
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = { { "AndreM222/copilot-lualine" } },
 		event = "VeryLazy",
 		opts = require("config/lualine"),
 	},

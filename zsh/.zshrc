@@ -33,29 +33,11 @@ set-global-tool-version() {
   cd ~ && asdf direnv local $1 $2 && cd -
 }
 
-##### ZSH
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
-bindkey -v # vim mode
 KEYTIMEOUT=1 # remove timeout
-
-zle-keymap-select () {
-  if [ $KEYMAP = vicmd ]; then
-      printf "\033[2 q"
-  else
-      printf "\033[6 q"
-  fi
-}
-zle -N zle-keymap-select
-
-zle-line-init () {
-  zle -K viins
-  printf "\033[6 q"
-}
-zle -N zle-line-init
-
 # Insensitive tab-completion
 export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 autoload -Uz compinit && compinit

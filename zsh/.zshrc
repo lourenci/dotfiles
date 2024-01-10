@@ -6,14 +6,16 @@ if [[ -z $TMUX ]]; then
   export PATH="$PATH:$HOME/.local/bin"
 fi
 
-export EDITOR="nvim"
+if [[ -z "$TERMINAL_EMULATOR" ]]; then # don't change editor for jetbrains terminal (it doesn't support some nvim plugins)
+	export EDITOR="nvim"
+fi
+
 export GPG_TTY=$(tty)
 export LC_ALL='en_US.UTF-8'
 export HISTCONTROL=ignoreboth
 
 alias g="git"
 alias ll="ls -lah"
-alias t="tmux-sessionizer"
 
 set-tool-version() {
   if [ $# -ne 2 ]; then

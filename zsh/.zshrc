@@ -111,8 +111,6 @@ source ~/fzf-tab/fzf-tab.plugin.zsh
 
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-eval "$(zoxide init zsh)"
-
 export DIRENV_LOG_FORMAT=
 export ASDF_DIRENV_IGNORE_MISSING_PLUGINS=1
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

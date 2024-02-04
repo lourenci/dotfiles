@@ -24,7 +24,7 @@ vim.opt.diffopt:append({ "algorithm:patience", "linematch:5000", "iwhite" })
 
 vim.opt.undofile = true
 
-vim.wo.foldtext = 'v:lua.vim.treesitter.foldtext()'
+vim.o.foldtext = ''
 vim.opt.foldmethod = "expr"
 vim.opt.foldenable = false
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

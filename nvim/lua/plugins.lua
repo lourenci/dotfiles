@@ -147,6 +147,7 @@ return {
 				disable = {
 					filetypes = {
 						"terraform",
+						"terraform-vars",
 						"dockerfile"
 					}
 				},

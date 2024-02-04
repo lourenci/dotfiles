@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-possible_sessions=$({ (echo $CDPATH | awk -F: '{for(i=1;i<=NF;i++) print $i}' | grep -v '^\.$' | xargs -I _ find _ -type d -maxdepth 1) & (tmux list-sessions -F '#{?session_attached,,#{session_name}}' 2> /dev/null | sed '/^$/d'); })
+possible_sessions() {
+	(echo $CDPATH | awk -F: '{for(i=1;i<=NF;i++) print $i}' | grep -v '^\.$' | xargs -I _ find _ -type d -maxdepth 1) & (tmux list-sessions -F '#{?session_attached,,#{session_name}}' 2> /dev/null | sed '/^$/d')
+}
 
-selected=$(echo "$possible_sessions" | \
-	FZF_DEFAULT_OPTS='--reverse --cycle' fzf --header "CTRL-S to create a session with that name; CTRL-X to kill a session;" --bind "ctrl-s:print-query+abort" --bind "ctrl-x:execute(tmux kill-session -t {})+reload(eval \"$possible_sessions\")")
+selected=$(possible_sessions | \
+	FZF_DEFAULT_OPTS='--reverse --cycle' fzf --header "CTRL-S to create a session with that name; CTRL-X to kill a session;" --bind "ctrl-s:print-query+abort" --bind "ctrl-x:execute(tmux kill-session -t {})")
 
 if [[ -z $selected ]]; then
     exit 0

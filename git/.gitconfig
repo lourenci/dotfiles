@@ -52,5 +52,9 @@
 	navigate = true
 [push]
 	autoSetupRemote = true
+[rerere]
+	enabled = true
 [includeIf "gitdir:~/Developer/indebted/"]
   path = ~/Developer/indebted/.gitconfig
+[maintenance]
+	repo = /Users/lourenci/Developer/indebted/platform

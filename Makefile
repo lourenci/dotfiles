@@ -7,7 +7,7 @@ help:
 .PHONY: nvim
 nvim: ## Install nvim
 	brew tap homebrew/cask-fonts
-	brew install ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server jq gopls
+	brew install ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server jq gopls shellcheck
 	asdf direnv shell nodejs 16.14.0 -- npm install -g grammarly-languageserver
 	GOBIN=$(PWD) go install golang.org/x/tools/cmd/goimports@latest && mv ./goimports ~/.local/bin/goimports
 	brew install neovim --HEAD
@@ -19,6 +19,7 @@ nvim: ## Install nvim
 		typescript typescript-language-server \
 		vscode-langservers-extracted \
 		yaml-language-server \
+		bash-language-server \
 		prettier
 	echo "https://github.com/artempyanykh/marksman/releases/download/$$(curl --silent "https://api.github.com/repos/artempyanykh/marksman/releases/latest" | jq ".. .tag_name? // empty")/marksman-macos" | sed 's/"//g' | xargs curl -O -L
 	chmod +x ./marksman-macos
@@ -27,7 +28,7 @@ nvim: ## Install nvim
 
 .PHONY: update-nvim
 update-nvim: ## Update nvim
-	brew upgrade ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server jq gopls
+	brew upgrade ripgrep fzf hashicorp/tap/terraform-ls font-symbols-only-nerd-font lua-language-server jq gopls shellcheck
 	GOBIN=$(PWD) go install golang.org/x/tools/cmd/goimports@latest && mv ./goimports ~/.local/bin/goimports
 	brew upgrade neovim --fetch-HEAD
 	asdf direnv shell nodejs 16.14.0 -- npm uninstall -g grammarly-languageserver
@@ -36,6 +37,7 @@ update-nvim: ## Update nvim
 		typescript typescript-language-server \
 		vscode-langservers-extracted \
 		yaml-language-server \
+		bash-language-server \
 		prettier
 	asdf direnv shell nodejs 16.14.0 -- npm install -g grammarly-languageserver
 	npm -g install \
@@ -43,6 +45,7 @@ update-nvim: ## Update nvim
 		typescript typescript-language-server \
 		vscode-langservers-extracted \
 		yaml-language-server \
+		bash-language-server \
 		prettier
 	echo "https://github.com/artempyanykh/marksman/releases/download/$$(curl --silent "https://api.github.com/repos/artempyanykh/marksman/releases/latest" | jq ".. .tag_name? // empty")/marksman-macos" | sed 's/"//g' | xargs curl -O -L
 	chmod +x ./marksman-macos

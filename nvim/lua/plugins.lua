@@ -248,7 +248,9 @@ return {
 				keymaps = require("keymappings").oil,
 				use_default_keymaps = false,
 				delete_to_trash = true,
-				lsp_rename_autosave = true,
+				lsp_file_methods = {
+					autosave_changes = "unmodified",
+				},
 			})
 		end,
 		event = "VeryLazy",

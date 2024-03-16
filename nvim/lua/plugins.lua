@@ -48,30 +48,6 @@ return {
 	{ "michaeljsmith/vim-indent-object", event = "VeryLazy" },
 
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					auto_trigger = true,
-					keymap = {
-						accept = false,
-						accept_word = false,
-						accept_line = false,
-						next = false,
-						prev = false,
-						dismiss = false,
-					},
-				},
-				filetypes = {
-					["*"] = true,
-				},
-			})
-		end,
-	},
-
-	{
 		"rgroli/other.nvim",
 		config = function()
 			require "config/other"
@@ -211,7 +187,6 @@ return {
 
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { { "AndreM222/copilot-lualine" } },
 		event = "VeryLazy",
 		opts = require("config/lualine"),
 	},

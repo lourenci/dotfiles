@@ -13,12 +13,12 @@
  	trustExitCode = true
 	hideResolved = true
 [interactive]
-	diffFilter = delta --color-only --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
+	diffFilter = delta --color-only
 [pager]
-	diff = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
-	log = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
-	reflog = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
-	show = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
 [init]
 	defaultBranch = main
 [alias]
